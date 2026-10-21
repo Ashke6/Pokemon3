@@ -1,0 +1,27 @@
+Q1 to Q16 by tool
+Q	Task	Tool	Needs
+1	.gitignore	Git	CMD only
+2	Branch and merge	Git	CMD only
+3	Push to GitHub	Git + GitHub	GitHub
+4	Clone, fetch, pull	Git + GitHub	GitHub
+5	Merge conflict	Git	CMD only
+6	Restore and revert	Git	CMD only
+7	Maven project, validate, compile	Maven	CMD only
+8	Maven lifecycle	Maven	CMD only
+9	Freestyle job hello-windows	Jenkins	Jenkins
+10	AppTest.java with 3 tests	Maven + JUnit	CMD only
+11	Pipeline pipeline-hello	Jenkins	Jenkins
+12	Jenkinsfile with options and parameters	Jenkins + Git	Jenkins, GitHub
+13	Pipeline calculator-pipeline	Jenkins + Maven + Git	Jenkins, GitHub
+14	Job calculator-ci from SCM	Jenkins + Maven + Git	Jenkins, GitHub
+15	Repo, .gitignore, branch, conflict, push	Git + GitHub	GitHub
+16	Maven project, tests, Jenkinsfile, Jenkins from SCM	All three	Jenkins, GitHub
+
+
+
+
+Count
+Group	Questions	How many
+Git and GitHub only	Q1, Q2, Q3, Q4, Q5, Q6, Q15	7
+Maven only	Q7, Q8, Q10	3
+Jenkins (alone or combined)	Q9, Q11, Q12, Q13, Q14, Q16	6
