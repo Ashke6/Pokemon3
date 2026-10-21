@@ -1,0 +1,62 @@
+Create a GitHub repository named git-journal.
+Step 2 — Open CMD and create the local folder
+
+mkdir C:\DevOpsLab
+cd /d C:\DevOpsLab
+mkdir git-journal
+cd git-journal
+
+git init -b main
+echo Practical 6 - Create a GitHub repository and push code > README.txt
+
+git add README.txt
+git commit -m "Initial commit"
+
+git config --global user.name "Sushmitha"
+git config --global user.email "sushmithanadar06@gmail.com"
+
+git remote add origin https://github.com/sushmithanadar06-stack/git-journal.git
+git remote -v
+
+git push -u origin main
+git status
+git branch -vv
+
+Question 4-
+cd /d C:\DevOpsLab
+git clone https://github.com/sushmithanadar06-stack/git-journal.git git-journal-copy
+cd git-journal-copy
+git status
+
+
+Step 2: Create README.md on GitHub
+1. Open your repository: git-journal.
+2. Click Add file → Create new file.
+3. Enter the filename README.md.
+4. Type this content:
+Git Journal
+Initial repository
+
+
+git fetch origin
+git log --oneline HEAD..origin/main
+
+
+git pull --ff-only
+type README.md
+git status
+
+
+cd /d C:\DevOpsLab\git-journal
+git pull --ff-only
+type README.md
+git status
+
+cd /d C:\DevOpsLab\git-journal-copy
+git pull --ff-only
+type README.md
+git status
+
+
+
+
