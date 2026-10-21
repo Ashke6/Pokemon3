@@ -1,0 +1,41 @@
+git --version
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Sushmitha"
+git config --global user.email "sushmithanadar06@gmail.com"
+git config --global init.defaultbranch main
+git config --global --list
+
+cd /d C:\Devops
+mkdir git-practice
+cd git-practice
+git init
+mkdir build
+echo build log data > build\output.log
+echo this is a draft > draft.txt
+echo SECRET=1234 > .env
+
+echo build/ > .gitignore
+echo *.log >> .gitignore
+echo .env >> .gitignore
+type .gitignore
+git status
+git check-ignore -v build/output.log .env
+git add .
+git diff --staged
+git commit -m "Add draft.txt and .gitignore"
+git status
+
+
+git switch -c feature-study-plan
+echo Study DevOps daily > study-plan.txt
+git add study-plan.txt
+git commit -m "Add study plan"
+
+git switch main
+dir
+git merge feature-study-plan
+
+git log --oneline --graph --all
+
+
