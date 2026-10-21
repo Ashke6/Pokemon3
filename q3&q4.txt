@@ -1,3 +1,9 @@
+Q3. Create GitHub repository git-journal and push local repository to GitHub using git remote add origin and git push -u origin main.
+Q4. Clone the repository in a second folder git-journal-copy, make an edit from GitHub website and synchronize both copies using git fetch and git pull --ff-only.
+
+
+
+
 Create a GitHub repository named git-journal.
 Step 2 — Open CMD and create the local folder
 
