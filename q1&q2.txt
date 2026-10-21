@@ -1,3 +1,7 @@
+
+Q1. Create build/output.log, draft.txt and configure .gitignore to ignore build/, *.log, .env. Verify using git check-ignore and git diff --staged.
+Q2. Create branch feature-study-plan, add study-plan.txt, commit and merge into main. Show graph log.
+
 git --version
 git config --global --unset user.name
 git config --global --unset user.email
