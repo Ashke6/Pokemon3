@@ -1,0 +1,78 @@
+Q5. Create a controlled merge conflict in course.txt between main and feature-course branch and resolve it to Course: DevOps with Git and Jenkins.
+Q6. Demonstrate unstage and discard using git restore --staged and git restore, and revert an unwanted commit using git revert.
+
+git --version
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Sushmitha"
+git config --global user.email "sushmithanadar06@gmail.com"
+git config --global --list
+
+cd /d C:\Devops
+rmdir /s /q q5-conflict
+git --version
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Sushmitha"
+git config --global user.email "sushmithanadar06@gmail.com"
+git config --global --list
+mkdir q5-conflict
+cd q5-conflict
+git init -b main
+echo Course: DevOps> course.txt
+git add course.txt
+git commit -m "Add course.txt"
+
+
+git switch -c feature-course
+echo Course: Git and Jenkins> course.txt
+git add course.txt
+git commit -m "Update course on feature-course"
+git switch main
+echo Course: DevOps Basics> course.txt
+git add course.txt
+git commit -m "Update course on main"
+git merge feature-course
+git status
+type course.txt
+
+
+echo Course: DevOps with Git and Jenkins> course.txt
+type course.txt
+git add course.txt
+git commit -m "Resolve conflict in course.txt"
+git status
+git log --oneline --graph --all
+
+
+cd /d C:\Devops
+rmdir /s /q q6-restore
+git --version
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Sushmitha"
+git config --global user.email "sushmithanadar06@gmail.com"
+git config --global --list
+mkdir q6-restore
+cd q6-restore
+git init -b main
+echo first line> draft.txt
+git add draft.txt
+git commit -m "Add draft.txt"
+echo second line>> draft.txt
+git add draft.txt
+git status
+git restore --staged draft.txt
+git status
+git restore draft.txt
+type draft.txt
+git status
+
+echo wrong content> wrong.txt
+git add wrong.txt
+git commit -m "Add unwanted wrong.txt"
+git log --oneline
+git revert HEAD --no-edit
+dir
+git log --oneline
+git status
