@@ -1,0 +1,104 @@
+Q7 Question: Create the Maven project student-calculator with the given pom.xml and App.java, and validate it using mvn validate and mvn compile.
+Q8 Question: Execute the Maven lifecycle: mvn clean compile, mvn package, run the jar using java -jar, and mvn install. Verify the local repository.
+
+java -version
+mvn -version
+cd /d C:\Devops
+rmdir /s /q student-calculator
+mkdir student-calculator
+cd student-calculator
+mkdir src\main\java\com\example
+mkdir src\test\java\com\example
+dir
+
+Create the two files
+
+2A: Open Notepad for pom.xml. Click Yes to create a new file.
+
+notepad pom.xml -
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.example</groupId>
+ <artifactId>student-calculator</artifactId>
+ <version>1.0.0</version>
+ <properties>
+  <maven.compiler.release>21</maven.compiler.release>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ </properties>
+ <dependencies>
+  <dependency>
+   <groupId>org.junit.jupiter</groupId>
+   <artifactId>junit-jupiter</artifactId>
+   <version>5.11.4</version>
+   <scope>test</scope>
+  </dependency>
+ </dependencies>
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.13.0</version>
+   </plugin>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.5.2</version>
+   </plugin>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.4.2</version>
+    <configuration>
+     <archive>
+      <manifest>
+       <mainClass>com.example.App</mainClass>
+      </manifest>
+     </archive>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+</project>
+
+Open Notepad for App.java. Click Yes again.
+
+notepad src\main\java\com\example\App.java
+package com.example;
+
+public class App {
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Sum = " + add(10, 20));
+    }
+}
+
+dir
+dir src\main\java\com\example
+
+
+dir pom.xml
+mvn validate
+mvn compile
+dir target\classes\com\example
+
+
+
+mvn clean compile
+mvn package
+dir target
+java -jar target\student-calculator-1.0.0.jar
+
+
+
+mvn install
+dir "%USERPROFILE%\.m2\repository\com\example\student-calculator\1.0.0"
+
+
