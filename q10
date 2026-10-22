@@ -1,0 +1,125 @@
+Q10
+
+Question: Create AppTest.java with 3 tests, run mvn clean test, observe the report in surefire-reports, create a deliberate failure, and repair it.
+
+cd /d C:\Devops
+rmdir /s /q junit-practical11
+mkdir junit-practical11
+cd junit-practical11
+mkdir src\main\java\com\example
+mkdir src\test\java\com\example
+mvn -version
+dir
+
+Part 2: Create the three files
+
+2A: pom.xml. Click Yes when Notepad asks to create the file.
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+     https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>junit-practical11</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>5.13.1</junit.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+2B: App.java. Click Yes again.
+notepad src\main\java\com\example\App.java
+
+package com.example;
+
+public class App {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(add(10, 20));
+    }
+}
+
+
+2C: AppTest.java. Click Yes again.
+notepad src\test\java\com\example\AppTest.java
+
+package com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class AppTest {
+
+    @Test
+    void addsPositiveNumbers() {
+        assertEquals(30, App.add(10, 20));
+    }
+
+    @Test
+    void addsZero() {
+        assertEquals(7, App.add(7, 0));
+    }
+
+    @Test
+    void addsNegativeNumbers() {
+        assertEquals(-5, App.add(-2, -3));
+    }
+}
+
+2D: Check the files exist
+
+dir
+dir src\main\java\com\example
+dir src\test\java\com\example
+
+
+
+Part 3: Run the 3 tests and show the report
+mvn clean test
+dir target\surefire-reports
+type target\surefire-reports\com.example.AppTest.txt
+
+
+Part 4: Make one test fail deliberately
+Open the test file:
+notepad src\test\java\com\example\AppTest.java
+
+In Notepad change assertEquals(30, App.add(10, 20)); to assertEquals(31, App.add(10, 20));, press Ctrl + S, close Notepad. Do not change App.java. Then run:
+mvn clean test -
+type target\surefire-reports\com.example.AppTest.txt
+
+Part 5: Repair the test and verify
+Open the test file again:
+notepad src\test\java\com\example\AppTest.java
+
+
+Change 31 back to 30, press Ctrl + S, close Notepad. Then run:
+mvn clean verify
+type target\surefire-reports\com.example.AppTest.txt
